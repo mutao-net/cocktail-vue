@@ -5,7 +5,6 @@ const app = express({ strict: true });
 app.use(express.static(__dirname + "/dist/"));
 
 app.get(/.*/, function(req, res) {
-  console.log("kitayo")
     res.sendfile(__dirname + "/dist/index.html");
 });
 

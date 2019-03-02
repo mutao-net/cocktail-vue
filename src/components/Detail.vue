@@ -1,5 +1,5 @@
 <template>
-  <el-row>
+  <el-row style="display: flex; justify-content: center;">
     <el-col :span="8" v-for="(drink, index) in list.drinks">
       <el-card :body-style="{ padding: '0px' }">
         <img :src="drink.strDrinkThumb" class="image">
@@ -55,10 +55,6 @@
   color: rgb(42, 41, 41);
 }
 
-.el-row {
-  display: flex;
-  justify-content: center
-}
 </style>
 
 <script>
