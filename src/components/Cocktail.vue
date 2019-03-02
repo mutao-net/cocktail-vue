@@ -52,10 +52,6 @@
   white-space: nowrap;
   color: rgb(42, 41, 41);
 }
-
-.el-row {
-  display: block !important;
-}
 </style>
 
 <script>
