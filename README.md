@@ -1,4 +1,4 @@
-# todo
+# Cocktail
 
 > A Vue.js project
 
