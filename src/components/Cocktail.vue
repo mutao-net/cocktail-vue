@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <el-col :span="6" v-for="(drink, index) in list.drinks">
+    <el-col :span="6" v-for="(drink, index) in list.drinks" :key="index">
       <el-card :body-style="{ padding: '0px' }">
         <img :src="drink.strDrinkThumb" class="image">
         <div style="padding: 14px;">
@@ -52,12 +52,16 @@
   white-space: nowrap;
   color: rgb(42, 41, 41);
 }
+
+.el-row {
+  display: block !important;
+}
 </style>
 
 <script>
 import axios from 'axios'
 export default {
-  data() {
+  data(){
     return {
       list: []
     }
