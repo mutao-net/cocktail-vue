@@ -4,11 +4,15 @@
       <el-card :body-style="{ padding: '0px' }">
         <img :src="drink.strDrinkThumb" class="image">
         <div style="padding: 14px;">
-          <div class="link">{{ drink.strDrink }}</div>
+          <div class="name"><b>{{ drink.strDrink }}</b></div>
           <div class="clearfix" style="padding-top: 25px;">
-            <div v-for="strIngredient in strIngredients">
-              {{ strIngredient }}
-            </div>
+            <ul class="recipe">
+              <div v-for="(strIngredient, index) in strIngredients">
+                  <li>{{ strIngredient }}</li>
+                  <li>{{ strMeasure[index] }}</li>
+              </div>
+            </ul>
+          </div>
           </div>
         </div>
       </el-card>
@@ -17,6 +21,10 @@
 </template>
 
 <style>
+.name {
+  text-shadow: 1px 1px 0 rgba(0,0,0,.2);
+}
+
 .time {
   font-size: 13px;
   color: #999;
@@ -55,6 +63,20 @@
   color: rgb(42, 41, 41);
 }
 
+.recipe:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.recipe li{
+  float: left;
+  display: block;
+  list-style-type: none;
+  text-align: center;
+  width: 50%;
+}
+
 </style>
 
 <script>
@@ -64,7 +86,8 @@ export default {
   data() {
     return {
       list: [],
-      strIngredients: []
+      strIngredients: [],
+      strMeasure: []
     }
   },
   created(){
@@ -76,8 +99,12 @@ export default {
     list: function () {
       for(var i = 1; i <= 15; i++){
         var str = 'strIngredient' + i
+        var strMea = 'strMeasure' + i
         if (this.list.drinks[0][str] !== ""){
           this.strIngredients.push(this.list.drinks[0][str])
+        }
+        if (this.list.drinks[0][strMea] != ""){
+          this.strMeasure.push(this.list.drinks[0][strMea])
         }
       }
     }
