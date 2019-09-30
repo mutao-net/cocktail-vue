@@ -105,9 +105,11 @@ export default {
     search: search
   },
   created(){
-    axios
-      .get('https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail')
-      .then(response => {this.list = response.data})
+    if(!this.list.length) {
+      axios
+        .get('https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail')
+        .then(response => {this.list = response.data})
+    }
   }
 }
 </script>

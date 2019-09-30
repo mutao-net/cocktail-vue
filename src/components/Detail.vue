@@ -1,6 +1,6 @@
 <template>
   <el-row style="display: flex; justify-content: center;">
-    <el-col :span="8" v-for="(drink, index) in list.drinks">
+    <el-col :span="8" v-for="(drink, index) in item.drinks">
       <el-card :body-style="{ padding: '0px' }">
         <img :src="drink.strDrinkThumb" class="image">
         <div style="padding: 14px;">
@@ -12,6 +12,7 @@
                   <li>{{ strMeasure[index] }}</li>
               </div>
             </ul>
+            <a @click="$router.go(-1)"><el-button type="text" class="button">Back</el-button></a>
           </div>
           </div>
         </div>
@@ -85,7 +86,7 @@ import Router from 'vue-router'
 export default {
   data() {
     return {
-      list: [],
+      item: [],
       strIngredients: [],
       strMeasure: []
     }
@@ -93,18 +94,18 @@ export default {
   created(){
     axios
       .get('https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=' + this.$route.params.id)
-      .then(response => {this.list = response.data})
+      .then(response => {this.item = response.data})
   },
   watch: {
-    list: function () {
+    item: function () {
       for(var i = 1; i <= 15; i++){
         var str = 'strIngredient' + i
         var strMea = 'strMeasure' + i
-        if (this.list.drinks[0][str] !== ""){
-          this.strIngredients.push(this.list.drinks[0][str])
+        if (this.item.drinks[0][str] !== ""){
+          this.strIngredients.push(this.item.drinks[0][str])
         }
-        if (this.list.drinks[0][strMea] != ""){
-          this.strMeasure.push(this.list.drinks[0][strMea])
+        if (this.item.drinks[0][strMea] != ""){
+          this.strMeasure.push(this.item.drinks[0][strMea])
         }
       }
     }
