@@ -18,7 +18,7 @@
     "axios": "^1.7.6",
     "element-ui": "^2.15.14",
     "express": "^4.21.1",
-    "vue": "^2.5.2",
+    "vue": "^3.0.0",
     "vue-router": "^3.6.5"
   },
   "devDependencies": {
